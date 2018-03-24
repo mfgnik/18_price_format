@@ -16,12 +16,12 @@ def format_price(price):
 
 def format_int_price(price):
     list_with_digits = []
-    string_with_price = str(int(price))
-    for i in range(len(string_with_price)):
+    string_with_price = str(int(price))[::-1]
+    for number_of_digit in range(len(string_with_price)):
         list_with_digits.append(
-            string_with_price[len(string_with_price) - 1 - i]
+            string_with_price[number_of_digit]
         )
-        if i % 3 == 2:
+        if number_of_digit % 3 == 2:
             list_with_digits.append(' ')
     list_with_digits.reverse()
     return ''.join(list_with_digits).lstrip()
