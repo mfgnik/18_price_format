@@ -32,7 +32,7 @@ def format_frac_price(price):
     letters_after_point = price[price.find('.') + 1:]
     first_letter = letters_after_point[0]
     if len(letters_after_point) > 2:
-        second_letter, third_letter = map(int, letters_after_point[1:])
+        second_letter, third_letter = map(int, letters_after_point[1:3])
         if third_letter >= 5:
             second_letter += 1
     elif len(letters_after_point) == 2:
