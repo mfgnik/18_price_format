@@ -3,8 +3,12 @@ from format_price import format_price
 
 
 class Test_format_price(unittest.TestCase):
-    def test_integer_number(self):
+    def test_integer_number_bigger_thousand(self):
         self.assertEqual(format_price('23112.000'), '23 112')
+
+
+    def test_integer_number_less_thousand(self):
+        self.assertEqual(format_price('23.000'), '23')
 
     def test_value_error(self):
         self.assertIsNone(format_price('eq221'))
