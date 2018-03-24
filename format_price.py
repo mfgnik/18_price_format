@@ -11,39 +11,15 @@ def format_price(price):
     if abs(frac_price) < error:
         return format_int_price(int_price)
     else:
-        return format_frac_price(price)
+        return format_frac_price(int_price, frac_price)
 
 
 def format_int_price(price):
-    list_with_digits = []
-    string_with_price = str(int(price))[::-1]
-    for number_of_digit in range(len(string_with_price)):
-        list_with_digits.append(
-            string_with_price[number_of_digit]
-        )
-        if number_of_digit % 3 == 2:
-            list_with_digits.append(' ')
-    list_with_digits.reverse()
-    return ''.join(list_with_digits).lstrip()
+    return '{:,}'.format(price).replace(',', ' ')
 
 
-def format_frac_price(price):
-    int_price = format_int_price(int(float(price)))
-    letters_after_point = price[price.find('.') + 1:]
-    first_letter = letters_after_point[0]
-    if len(letters_after_point) > 2:
-        second_letter, third_letter = map(int, letters_after_point[1:3])
-        if third_letter >= 5:
-            second_letter += 1
-    elif len(letters_after_point) == 2:
-        second_letter = letters_after_point[1]
-    else:
-        second_letter = 0
-    return '{}.{}{}'.format(
-        format_int_price(int_price),
-        first_letter,
-        second_letter
-    )
+def format_frac_price(int_price, frac_price):
+    return '{}.{}'.format(int_price, round(frac_price * 100))
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
