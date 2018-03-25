@@ -10,7 +10,7 @@ def format_price(price):
     if abs(price_value - int(price_value)) < error:
         return '{:,}'.format(int(price_value)).replace(',', ' ')
     else:
-        return '{}'.format(round(price_value * 100) / 100)
+        return '{}'.format(round(price_value * 100 + error) / 100)
 
 
 if __name__ == '__main__':
