@@ -28,7 +28,7 @@ class Test_format_price(unittest.TestCase):
         self.assertEqual(format_price('0.543'), '0.54')
 
     def test_no_point(self):
-        self.assertEqual(format_price('5'), 5)
+        self.assertEqual(format_price('5'), '5')
 
 
 if __name__ == '__main__':
