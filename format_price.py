@@ -3,23 +3,15 @@ import sys
 
 def format_price(price):
     try:
-        int_price = int(float(price))
-        frac_price = float(price) - int_price
+        price_value = float(price)
     except ValueError:
         return None
     error = 10 ** -6
-    if abs(frac_price) < error:
-        return format_int_price(int_price)
+    if abs(price_value - int(price_value)) < error:
+        return '{:,}'.format(int(price_value)).replace(',', ' ')
     else:
-        return format_frac_price(int_price, frac_price)
+        return '{}'.format(round(price_value * 100) / 100)
 
-
-def format_int_price(price):
-    return '{:,}'.format(price).replace(',', ' ')
-
-
-def format_frac_price(int_price, frac_price):
-    return '{}.{}'.format(int_price, round(frac_price * 100))
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
