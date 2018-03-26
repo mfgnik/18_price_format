@@ -4,7 +4,7 @@ import sys
 def format_price(price):
     try:
         price_value = float(price)
-    except ValueError:
+    except (ValueError, TypeError):
         return None
     error = 10 ** -6
     if abs(price_value - int(price_value)) < error:
