@@ -9,8 +9,14 @@ class Test_format_price(unittest.TestCase):
     def test_integer_number_less_thousand(self):
         self.assertEqual(format_price('23.000'), '23')
 
-    def test_value_error(self):
+    def test_value_is_string(self):
         self.assertIsNone(format_price('eq221'))
+
+    def test_value_is_list(self):
+        self.assertIsNone(format_price([]))
+
+    def test_value_is_number(self):
+        self.assertEqual(format_price(11), '11')
 
     def test_fractional_number_without_round(self):
         self.assertEqual(format_price('4.364'), '4.36')
